@@ -1,7 +1,9 @@
 #!/bin/sh
 
 FULL_PATH=$(realpath "$1")
-RESIDENT_DIRECTORY=$(dirname "$FULL_PATH")
+RESIDENT_DIRECTORY=$(dirname "${FULL_PATH}")
+BASENAME=$(basename "${FULL_PATH}")
 
-cd "$RESIDENT_DIRECTORY"
-$@
+cd "${RESIDENT_DIRECTORY}"
+shift
+"./${BASENAME}" $@
